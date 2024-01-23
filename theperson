@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #person {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="person">👤</div>
+
+    <script>
+        // Position der Person
+        let personPosition = { top: 50, left: 50 };
+
+        // Referenz zum Personendiv
+        const personElement = document.getElementById('person');
+
+        // Funktion zum Aktualisieren der Personenposition
+        function updatePersonPosition() {
+            personElement.style.top = personPosition.top + 'px';
+            personElement.style.left = personPosition.left + 'px';
+        }
+
+        // Event Listener für Tastatureingaben
+        window.addEventListener('keydown', (event) => {
+            // Schritte für die Bewegung
+            const step = 10;
+
+            // Tastatur-Code für die Pfeiltasten
+            switch (event.code) {
+                case 'ArrowUp':
+                    personPosition.top -= step;
+                    break;
+                case 'ArrowDown':
+                    personPosition.top += step;
+                    break;
+                case 'ArrowLeft':
+                    personPosition.left -= step;
+                    break;
+                case 'ArrowRight':
+                    personPosition.left += step;
+                    break;
+            }
+
+            // Aktualisiere die Position
+            updatePersonPosition();
+        });
+
+        // Initialisiere die Position
+        updatePersonPosition();
+    </script>
+</body>
+</html>
